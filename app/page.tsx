@@ -30,7 +30,7 @@ export default function Home() {
         <p style={{color:'#9FB2AC',letterSpacing:'4px',textTransform:'uppercase',fontSize:'14px',marginBottom:'16px'}}>About Me</p>
         <h2 style={{color:'#FFF9EB',fontSize:'36px',fontWeight:'bold',marginBottom:'24px'}}>Who I Am</h2>
         <p style={{color:'#FFF9EB',opacity:0.75,fontSize:'18px',lineHeight:'1.8'}}>
-          I am a Frontend Developer and freelancer based in Lahore, Pakistan. I specialize in building modern web applications using React and Next.js. Currently pursuing my BS in Artificial Intelligence at UMT while working on real-world SaaS products and client projects.
+          I am a Frontend Developer and freelancer based in Lahore, Pakistan. I specialize in building modern web applications using React and Next.js. I also work with WordPress, Figma, and various DevOps tools. Currently pursuing my BS in Artificial Intelligence at UMT.
         </p>
         <div style={{display:'flex',justifyContent:'center',gap:'48px',marginTop:'48px'}}>
           <div>
@@ -54,19 +54,6 @@ export default function Home() {
         <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))',gap:'24px'}}>
 
           <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'32px',textAlign:'left',border:'1px solid rgba(159,178,172,0.2)'}}>
-            <h3 style={{color:'#FFF9EB',fontSize:'22px',fontWeight:'bold',marginBottom:'12px'}}>Rootfre</h3>
-            <p style={{color:'#FFF9EB',opacity:0.7,fontSize:'15px',lineHeight:'1.7',marginBottom:'20px'}}>
-              A social media scheduling SaaS app built with Next.js 15, PostgreSQL, and Prisma. Supports multi-platform post scheduling and AI caption generation.
-            </p>
-            <div style={{display:'flex',gap:'8px',flexWrap:'wrap',marginBottom:'20px'}}>
-              {['Next.js','Prisma','PostgreSQL','Railway'].map(tag => (
-                <span key={tag} style={{backgroundColor:'rgba(159,178,172,0.15)',color:'#9FB2AC',padding:'4px 12px',borderRadius:'999px',fontSize:'12px'}}>{tag}</span>
-              ))}
-            </div>
-            <a href="#" style={{color:'#9FB2AC',fontSize:'14px',fontWeight:'600',textDecoration:'none'}}>View Project →</a>
-          </div>
-
-          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'32px',textAlign:'left',border:'1px solid rgba(159,178,172,0.2)'}}>
             <h3 style={{color:'#FFF9EB',fontSize:'22px',fontWeight:'bold',marginBottom:'12px'}}>AI Code Reviewer</h3>
             <p style={{color:'#FFF9EB',opacity:0.7,fontSize:'15px',lineHeight:'1.7',marginBottom:'20px'}}>
               A GitHub-integrated AI code review tool using FastAPI, React, and Google Gemini API for automated PR analysis.
@@ -76,7 +63,7 @@ export default function Home() {
                 <span key={tag} style={{backgroundColor:'rgba(159,178,172,0.15)',color:'#9FB2AC',padding:'4px 12px',borderRadius:'999px',fontSize:'12px'}}>{tag}</span>
               ))}
             </div>
-            <a href="#" style={{color:'#9FB2AC',fontSize:'14px',fontWeight:'600',textDecoration:'none'}}>View Project →</a>
+            <a href="https://github.com/AREEBA-ZIA/ai-code-reviewer" target="_blank" style={{color:'#9FB2AC',fontSize:'14px',fontWeight:'600',textDecoration:'none'}}>View Project →</a>
           </div>
 
           <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'32px',textAlign:'left',border:'1px solid rgba(159,178,172,0.2)'}}>
@@ -112,24 +99,35 @@ export default function Home() {
         <p style={{color:'#9FB2AC',letterSpacing:'4px',textTransform:'uppercase',fontSize:'14px',marginBottom:'16px'}}>What I Know</p>
         <h2 style={{color:'#FFF9EB',fontSize:'36px',fontWeight:'bold',marginBottom:'48px'}}>Skills</h2>
         <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(250px,1fr))',gap:'24px',textAlign:'left'}}>
+
           <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'28px',border:'1px solid rgba(159,178,172,0.2)'}}>
             <h3 style={{color:'#9FB2AC',fontSize:'16px',fontWeight:'600',marginBottom:'16px'}}>Frontend</h3>
-            {['React','Next.js','Tailwind CSS','HTML & CSS','JavaScript'].map(skill => (
+            {['React','Next.js','Tailwind CSS','HTML & CSS','JavaScript','WordPress','Figma'].map(skill => (
               <div key={skill} style={{color:'#FFF9EB',opacity:0.8,fontSize:'15px',padding:'8px 0',borderBottom:'1px solid rgba(255,249,235,0.08)'}}>{skill}</div>
             ))}
           </div>
+
           <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'28px',border:'1px solid rgba(159,178,172,0.2)'}}>
-            <h3 style={{color:'#9FB2AC',fontSize:'16px',fontWeight:'600',marginBottom:'16px'}}>Backend & Tools</h3>
-            {['Node.js','FastAPI','Prisma','PostgreSQL','Docker'].map(skill => (
+            <h3 style={{color:'#9FB2AC',fontSize:'16px',fontWeight:'600',marginBottom:'16px'}}>Backend & Database</h3>
+            {['Node.js','FastAPI','Prisma','PostgreSQL','SQLite'].map(skill => (
               <div key={skill} style={{color:'#FFF9EB',opacity:0.8,fontSize:'15px',padding:'8px 0',borderBottom:'1px solid rgba(255,249,235,0.08)'}}>{skill}</div>
             ))}
           </div>
+
+          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'28px',border:'1px solid rgba(159,178,172,0.2)'}}>
+            <h3 style={{color:'#9FB2AC',fontSize:'16px',fontWeight:'600',marginBottom:'16px'}}>DevOps & Tools</h3>
+            {['Docker','GitHub','GitLab','Git','Vercel','Railway'].map(skill => (
+              <div key={skill} style={{color:'#FFF9EB',opacity:0.8,fontSize:'15px',padding:'8px 0',borderBottom:'1px solid rgba(255,249,235,0.08)'}}>{skill}</div>
+            ))}
+          </div>
+
           <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'28px',border:'1px solid rgba(159,178,172,0.2)'}}>
             <h3 style={{color:'#9FB2AC',fontSize:'16px',fontWeight:'600',marginBottom:'16px'}}>AI & Others</h3>
-            {['Python','C++','Gemini API','Anthropic API','Git & GitHub'].map(skill => (
+            {['Python','C++','Gemini API','Anthropic API','Prompt Engineering'].map(skill => (
               <div key={skill} style={{color:'#FFF9EB',opacity:0.8,fontSize:'15px',padding:'8px 0',borderBottom:'1px solid rgba(255,249,235,0.08)'}}>{skill}</div>
             ))}
           </div>
+
         </div>
       </section>
 
