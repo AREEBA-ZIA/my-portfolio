@@ -1,6 +1,11 @@
+'use client';
 import Navbar from './components/Navbar';
 
 export default function Home() {
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
+  };
+
   return (
     <>
       <Navbar />
@@ -9,19 +14,19 @@ export default function Home() {
           <p style={{color:'#9FB2AC',letterSpacing:'4px',textTransform:'uppercase',fontSize:'14px'}}>
             Frontend Developer and AI Student
           </p>
-          <h1 style={{color:'#FFF9EB',fontSize:'48px',fontWeight:'bold'}}>
+          <h1 style={{color:'#FFF9EB',fontSize:'48px',fontWeight:'bold',lineHeight:'1.2'}}>
             Hi, I am Areeba Zia
           </h1>
-          <p style={{color:'#FFF9EB',opacity:0.75,fontSize:'18px',maxWidth:'560px'}}>
+          <p style={{color:'#FFF9EB',opacity:0.75,fontSize:'18px',maxWidth:'560px',lineHeight:'1.8'}}>
             I build clean, modern web experiences. Currently pursuing BS in AI at UMT.
           </p>
-          <div style={{display:'flex',gap:'16px',marginTop:'16px'}}>
-            <a href="#projects" style={{backgroundColor:'#9FB2AC',color:'#5D0D18',padding:'12px 24px',borderRadius:'999px',fontWeight:'600',textDecoration:'none'}}>
+          <div style={{display:'flex',gap:'16px',marginTop:'16px',flexWrap:'wrap',justifyContent:'center'}}>
+            <button onClick={() => scrollTo('projects')} style={{backgroundColor:'#9FB2AC',color:'#5D0D18',padding:'12px 24px',borderRadius:'999px',fontWeight:'600',border:'none',cursor:'pointer',fontSize:'16px'}}>
               View Projects
-            </a>
-            <a href="#contact" style={{border:'2px solid #9FB2AC',color:'#9FB2AC',padding:'12px 24px',borderRadius:'999px',fontWeight:'600',textDecoration:'none'}}>
+            </button>
+            <button onClick={() => scrollTo('contact')} style={{border:'2px solid #9FB2AC',color:'#9FB2AC',padding:'12px 24px',borderRadius:'999px',fontWeight:'600',background:'transparent',cursor:'pointer',fontSize:'16px'}}>
               Contact Me
-            </a>
+            </button>
           </div>
         </section>
       </main>
@@ -32,7 +37,7 @@ export default function Home() {
         <p style={{color:'#FFF9EB',opacity:0.75,fontSize:'18px',lineHeight:'1.8'}}>
           I am a Frontend Developer and freelancer based in Lahore, Pakistan. I specialize in building modern web applications using React and Next.js. I also work with WordPress, Figma, and various DevOps tools. Currently pursuing my BS in Artificial Intelligence at UMT.
         </p>
-        <div style={{display:'flex',justifyContent:'center',gap:'48px',marginTop:'48px'}}>
+        <div style={{display:'flex',justifyContent:'center',gap:'48px',marginTop:'48px',flexWrap:'wrap'}}>
           <div>
             <h3 style={{color:'#9FB2AC',fontSize:'32px',fontWeight:'bold'}}>2+</h3>
             <p style={{color:'#FFF9EB',opacity:0.6,fontSize:'14px'}}>Years Experience</p>
@@ -53,7 +58,7 @@ export default function Home() {
         <h2 style={{color:'#FFF9EB',fontSize:'36px',fontWeight:'bold',marginBottom:'48px'}}>Projects</h2>
         <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))',gap:'24px'}}>
 
-          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'32px',textAlign:'left',border:'1px solid rgba(159,178,172,0.2)'}}>
+          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'32px',textAlign:'left',border:'1px solid rgba(159,178,172,0.2)',transition:'transform 0.2s'}}>
             <h3 style={{color:'#FFF9EB',fontSize:'22px',fontWeight:'bold',marginBottom:'12px'}}>AI Code Reviewer</h3>
             <p style={{color:'#FFF9EB',opacity:0.7,fontSize:'15px',lineHeight:'1.7',marginBottom:'20px'}}>
               A GitHub-integrated AI code review tool using FastAPI, React, and Google Gemini API for automated PR analysis.
@@ -101,7 +106,7 @@ export default function Home() {
         <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(250px,1fr))',gap:'24px',textAlign:'left'}}>
 
           <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'28px',border:'1px solid rgba(159,178,172,0.2)'}}>
-            <h3 style={{color:'#9FB2AC',fontSize:'16px',fontWeight:'600',marginBottom:'16px'}}>Frontend</h3>
+            <h3 style={{color:'#9FB2AC',fontSize:'16px',fontWeight:'600',marginBottom:'16px'}}>Frontend & Design</h3>
             {['React','Next.js','Tailwind CSS','HTML & CSS','JavaScript','WordPress','Figma'].map(skill => (
               <div key={skill} style={{color:'#FFF9EB',opacity:0.8,fontSize:'15px',padding:'8px 0',borderBottom:'1px solid rgba(255,249,235,0.08)'}}>{skill}</div>
             ))}
@@ -140,6 +145,9 @@ export default function Home() {
         <div style={{display:'flex',flexDirection:'column',gap:'16px',marginBottom:'48px'}}>
           <a href="mailto:areebazia959@gmail.com" style={{backgroundColor:'#9FB2AC',color:'#5D0D18',padding:'16px 32px',borderRadius:'999px',fontWeight:'600',textDecoration:'none',fontSize:'16px'}}>
             Send Me an Email
+          </a>
+          <a href="https://www.linkedin.com/in/areeba-zia2006/" target="_blank" style={{backgroundColor:'#5D0D18',border:'2px solid #9FB2AC',color:'#9FB2AC',padding:'16px 32px',borderRadius:'999px',fontWeight:'600',textDecoration:'none',fontSize:'16px'}}>
+            LinkedIn Profile
           </a>
           <a href="https://github.com/AREEBA-ZIA" target="_blank" style={{border:'2px solid #9FB2AC',color:'#9FB2AC',padding:'16px 32px',borderRadius:'999px',fontWeight:'600',textDecoration:'none',fontSize:'16px'}}>
             GitHub Profile
