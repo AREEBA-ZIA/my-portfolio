@@ -97,6 +97,32 @@ export default function Home() {
             <a href="https://github.com/AREEBA-ZIA/Amazon-Clone" target="_blank" style={{color:'#9FB2AC',fontSize:'14px',fontWeight:'600',textDecoration:'none'}}>View Project →</a>
           </div>
 
+          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'32px',textAlign:'left',border:'1px solid rgba(159,178,172,0.2)'}}>
+            <h3 style={{color:'#FFF9EB',fontSize:'22px',fontWeight:'bold',marginBottom:'12px'}}>Task Board</h3>
+            <p style={{color:'#FFF9EB',opacity:0.7,fontSize:'15px',lineHeight:'1.7',marginBottom:'20px'}}>
+              A task management app to add, organize, and drop tasks with a clean, intuitive interface.
+            </p>
+            <div style={{display:'flex',gap:'8px',flexWrap:'wrap',marginBottom:'20px'}}>
+              {['Next.js','TypeScript','Tailwind CSS'].map(tag => (
+                <span key={tag} style={{backgroundColor:'rgba(159,178,172,0.15)',color:'#9FB2AC',padding:'4px 12px',borderRadius:'999px',fontSize:'12px'}}>{tag}</span>
+              ))}
+            </div>
+            <a href="https://github.com/AREEBA-ZIA/task-board" target="_blank" style={{color:'#9FB2AC',fontSize:'14px',fontWeight:'600',textDecoration:'none'}}>View Project →</a>
+          </div>
+
+          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'32px',textAlign:'left',border:'1px solid rgba(159,178,172,0.2)'}}>
+            <h3 style={{color:'#FFF9EB',fontSize:'22px',fontWeight:'bold',marginBottom:'12px'}}>SourceIt</h3>
+            <p style={{color:'#FFF9EB',opacity:0.7,fontSize:'15px',lineHeight:'1.7',marginBottom:'20px'}}>
+              A demand-based shopping platform where customers request specific products and the team sources and delivers them.
+            </p>
+            <div style={{display:'flex',gap:'8px',flexWrap:'wrap',marginBottom:'20px'}}>
+              {['Next.js','Supabase','TypeScript'].map(tag => (
+                <span key={tag} style={{backgroundColor:'rgba(159,178,172,0.15)',color:'#9FB2AC',padding:'4px 12px',borderRadius:'999px',fontSize:'12px'}}>{tag}</span>
+              ))}
+            </div>
+            <a href="https://github.com/AREEBA-ZIA/sourceit" target="_blank" style={{color:'#9FB2AC',fontSize:'14px',fontWeight:'600',textDecoration:'none'}}>View Project →</a>
+          </div>
+
         </div>
       </section>
 
