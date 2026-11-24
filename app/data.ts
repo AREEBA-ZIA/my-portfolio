@@ -1,6 +1,7 @@
 export const links = {
   github: "https://github.com/AREEBA-ZIA",
-  email: "", // TODO: apni email yahan likho, e.g. "you@gmail.com"
+  linkedin: "", 
+  email: "areebazia959@gmail.com", 
   fiverr: "", // TODO: Fiverr profile link
   upwork: "", // TODO: Upwork profile link
 };
@@ -66,7 +67,15 @@ export const journey = [
   },
 ];
 
-export const projects = [
+export type Project = {
+  name: string;
+  status: string;
+  text: string;
+  tags: string[];
+  href?: string;
+};
+
+export const projects: Project[] = [
   {
     name: "Rootfre",
     status: "Launching soon",
