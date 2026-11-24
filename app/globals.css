@@ -1,18 +1,195 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "tailwindcss";
 
 :root {
-  --cream: #FFF9EB;
-  --sage: #9FB2AC;
-  --maroon: #5D0D18;
-  --maroon-dark: #3a0810;
+  --ink: #0d0c1d;
+  --ink-2: #16142e;
+  --iris: #7c6cff;
+  --ice: #9be7ff;
+  --rose: #ff8fb1;
+  --text: #ecebf7;
+  --muted: #a9a6c9;
+  --line: rgba(155, 231, 255, 0.14);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink2: var(--ink-2);
+  --color-iris: var(--iris);
+  --color-ice: var(--ice);
+  --color-rose: var(--rose);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --font-display: var(--f-display), ui-sans-serif, sans-serif;
+  --font-sans: var(--f-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background-color: var(--maroon-dark);
-  color: var(--cream);
-  font-family: 'Segoe UI', sans-serif;
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ice);
+  outline-offset: 3px;
+}
+
+/* ---------- Hero 3D scene ---------- */
+.scene {
+  perspective: 1200px;
+}
+.stage {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.25s ease-out;
+}
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px solid rgba(124, 108, 255, 0.55);
+  transform-style: preserve-3d;
+}
+.ring-a {
+  animation: spin-a 22s linear infinite;
+}
+.ring-b {
+  inset: 9%;
+  border-color: rgba(155, 231, 255, 0.45);
+  animation: spin-b 30s linear infinite;
+}
+.ring-c {
+  inset: -9%;
+  border-style: dashed;
+  border-color: rgba(255, 143, 177, 0.4);
+  animation: spin-c 40s linear infinite;
+}
+@keyframes spin-a {
+  from { transform: rotateX(72deg) rotateZ(0deg); }
+  to { transform: rotateX(72deg) rotateZ(360deg); }
+}
+@keyframes spin-b {
+  from { transform: rotateY(68deg) rotateZ(0deg); }
+  to { transform: rotateY(68deg) rotateZ(-360deg); }
+}
+@keyframes spin-c {
+  from { transform: rotateX(58deg) rotateY(24deg) rotateZ(0deg); }
+  to { transform: rotateX(58deg) rotateY(24deg) rotateZ(360deg); }
+}
+
+.chip {
+  position: absolute;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+  background: rgba(22, 20, 46, 0.78);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+  animation: bob 6s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -12px; }
+}
+
+.floor {
+  position: absolute;
+  left: -25%;
+  right: -25%;
+  bottom: 0;
+  height: 48%;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  transform: perspective(520px) rotateX(64deg);
+  transform-origin: bottom;
+  mask-image: linear-gradient(to top, #000 10%, transparent 90%);
+  animation: floor 5s linear infinite;
+  pointer-events: none;
+}
+@keyframes floor {
+  to { background-position: 0 64px; }
+}
+
+/* single orchestrated load sequence */
+.rise {
+  opacity: 0;
+  translate: 0 24px;
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 120ms + 100ms);
+}
+@keyframes rise {
+  to { opacity: 1; translate: 0 0; }
+}
+
+/* ---------- Tilt cards ---------- */
+.tilt-wrap {
+  perspective: 900px;
+}
+.tilt {
+  position: relative;
+  height: 100%;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg));
+  transition: transform 0.15s ease-out, border-color 0.2s;
+}
+.tilt:hover {
+  border-color: rgba(124, 108, 255, 0.6);
+}
+.tilt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    240px circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(155, 231, 255, 0.16),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.tilt:hover::after {
+  opacity: 1;
+}
+.lift {
+  transform: translateZ(30px);
+}
+
+/* ---------- Timeline ---------- */
+.timeline {
+  position: relative;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--iris), var(--ice), var(--rose));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .rise { opacity: 1; translate: 0 0; }
+  .stage, .tilt { transform: none !important; }
 }

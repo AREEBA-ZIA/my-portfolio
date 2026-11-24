@@ -1,186 +1,179 @@
-'use client';
-import Navbar from './components/Navbar';
+import Image from "next/image";
+import Hero from "./components/Hero";
+import Tilt from "./components/Tilt";
+import { journey, links, projects, skillGroups } from "./data";
+
+const nav = ["About", "Skills", "Journey", "Projects", "Certificate", "Contact"];
+
+function Heading({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">{children}</h2>
+  );
+}
+
+const outlineBtn =
+  "rounded-xl border border-white/20 px-6 py-3 font-semibold transition hover:border-ice hover:text-ice";
 
 export default function Home() {
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
-  };
-
   return (
-    <>
-      <Navbar />
-      <main style={{minHeight:'100vh',display:'flex',alignItems:'center',justifyContent:'center',textAlign:'center',padding:'24px'}}>
-        <section style={{display:'flex',flexDirection:'column',alignItems:'center',gap:'24px'}}>
-          <p style={{color:'#9FB2AC',letterSpacing:'4px',textTransform:'uppercase',fontSize:'14px'}}>
-            Frontend Developer and AI Student
-          </p>
-          <h1 style={{color:'#FFF9EB',fontSize:'48px',fontWeight:'bold',lineHeight:'1.2'}}>
-            Hi, I am Areeba Zia
-          </h1>
-          <p style={{color:'#FFF9EB',opacity:0.75,fontSize:'18px',maxWidth:'560px',lineHeight:'1.8'}}>
-            I build clean, modern web experiences. Currently pursuing BS in AI at UMT.
-          </p>
-          <div style={{display:'flex',gap:'16px',marginTop:'16px',flexWrap:'wrap',justifyContent:'center'}}>
-            <button onClick={() => scrollTo('projects')} style={{backgroundColor:'#9FB2AC',color:'#5D0D18',padding:'12px 24px',borderRadius:'999px',fontWeight:'600',border:'none',cursor:'pointer',fontSize:'16px'}}>
-              View Projects
-            </button>
-            <button onClick={() => scrollTo('contact')} style={{border:'2px solid #9FB2AC',color:'#9FB2AC',padding:'12px 24px',borderRadius:'999px',fontWeight:'600',background:'transparent',cursor:'pointer',fontSize:'16px'}}>
-              Contact Me
-            </button>
-          </div>
-        </section>
-      </main>
+    <main>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink/70 backdrop-blur-md">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <a href="#top" className="font-display text-lg font-bold">
+            Areeba Zia
+          </a>
+          <ul className="hidden gap-6 text-sm text-muted sm:flex">
+            {nav.map((n) => (
+              <li key={n}>
+                <a href={`#${n.toLowerCase()}`} className="transition hover:text-ice">
+                  {n}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </header>
 
-      <section id="about" style={{padding:'80px 48px',maxWidth:'800px',margin:'0 auto',textAlign:'center'}}>
-        <p style={{color:'#9FB2AC',letterSpacing:'4px',textTransform:'uppercase',fontSize:'14px',marginBottom:'16px'}}>About Me</p>
-        <h2 style={{color:'#FFF9EB',fontSize:'36px',fontWeight:'bold',marginBottom:'24px'}}>Who I Am</h2>
-        <p style={{color:'#FFF9EB',opacity:0.75,fontSize:'18px',lineHeight:'1.8'}}>
-          I am a Frontend Developer and freelancer based in Lahore, Pakistan. I specialize in building modern web applications using React and Next.js. I also work with WordPress, Figma, and various DevOps tools. Currently pursuing my BS in Artificial Intelligence at UMT.
+      <Hero />
+
+      <section id="about" className="mx-auto max-w-6xl px-6 py-24">
+        <Heading>I like turning designs into working products.</Heading>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+          I started with HTML, CSS and JavaScript in 2023, moved into remote client work in 2024,
+          and now build full-stack apps with React, Next.js and TypeScript. Alongside that, I am
+          studying Artificial Intelligence at UMT and taking an AI/ML course at Arfa Karim
+          Technology Park.
         </p>
-        <div style={{display:'flex',justifyContent:'center',gap:'48px',marginTop:'48px',flexWrap:'wrap'}}>
-          <div>
-            <h3 style={{color:'#9FB2AC',fontSize:'32px',fontWeight:'bold'}}>2+</h3>
-            <p style={{color:'#FFF9EB',opacity:0.6,fontSize:'14px'}}>Years Experience</p>
-          </div>
-          <div>
-            <h3 style={{color:'#9FB2AC',fontSize:'32px',fontWeight:'bold'}}>10+</h3>
-            <p style={{color:'#FFF9EB',opacity:0.6,fontSize:'14px'}}>Projects Built</p>
-          </div>
-          <div>
-            <h3 style={{color:'#9FB2AC',fontSize:'32px',fontWeight:'bold'}}>5+</h3>
-            <p style={{color:'#FFF9EB',opacity:0.6,fontSize:'14px'}}>Happy Clients</p>
-          </div>
+      </section>
+
+      <section id="skills" className="mx-auto max-w-6xl px-6 py-24">
+        <Heading>Skills</Heading>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          {skillGroups.map((g) => (
+            <Tilt key={g.title}>
+              <div className="lift p-7">
+                <h3 className="font-display text-2xl font-bold">{g.title}</h3>
+                <p className="mt-1 text-sm text-muted">{g.note}</p>
+                <ul className="mt-5 flex flex-wrap gap-2">
+                  {g.items.map((s) => (
+                    <li
+                      key={s}
+                      className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-sm"
+                    >
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Tilt>
+          ))}
         </div>
       </section>
 
-      <section id="projects" style={{padding:'80px 48px',maxWidth:'1100px',margin:'0 auto',textAlign:'center'}}>
-        <p style={{color:'#9FB2AC',letterSpacing:'4px',textTransform:'uppercase',fontSize:'14px',marginBottom:'16px'}}>My Work</p>
-        <h2 style={{color:'#FFF9EB',fontSize:'36px',fontWeight:'bold',marginBottom:'48px'}}>Projects</h2>
-        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))',gap:'24px'}}>
+      <section id="journey" className="mx-auto max-w-3xl px-6 py-24">
+        <Heading>Journey</Heading>
+        <ol className="timeline mt-10 space-y-10">
+          {journey.map((j) => (
+            <li key={j.title} className="relative pl-10">
+              <span className="absolute left-0 top-1.5 h-4 w-4 rounded-full border-2 border-ice bg-ink" />
+              <p className="text-sm font-semibold text-ice">{j.when}</p>
+              <h3 className="mt-1 font-display text-xl font-bold">{j.title}</h3>
+              <p className="mt-1 text-muted">{j.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
 
-          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'32px',textAlign:'left',border:'1px solid rgba(159,178,172,0.2)',transition:'transform 0.2s'}}>
-            <h3 style={{color:'#FFF9EB',fontSize:'22px',fontWeight:'bold',marginBottom:'12px'}}>AI Code Reviewer</h3>
-            <p style={{color:'#FFF9EB',opacity:0.7,fontSize:'15px',lineHeight:'1.7',marginBottom:'20px'}}>
-              A GitHub-integrated AI code review tool using FastAPI, React, and Google Gemini API for automated PR analysis.
-            </p>
-            <div style={{display:'flex',gap:'8px',flexWrap:'wrap',marginBottom:'20px'}}>
-              {['FastAPI','React','Gemini API','Docker'].map(tag => (
-                <span key={tag} style={{backgroundColor:'rgba(159,178,172,0.15)',color:'#9FB2AC',padding:'4px 12px',borderRadius:'999px',fontSize:'12px'}}>{tag}</span>
-              ))}
-            </div>
-            <a href="https://github.com/AREEBA-ZIA/ai-code-reviewer" target="_blank" style={{color:'#9FB2AC',fontSize:'14px',fontWeight:'600',textDecoration:'none'}}>View Project →</a>
-          </div>
-
-          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'32px',textAlign:'left',border:'1px solid rgba(159,178,172,0.2)'}}>
-            <h3 style={{color:'#FFF9EB',fontSize:'22px',fontWeight:'bold',marginBottom:'12px'}}>Campus Analytics Engine</h3>
-            <p style={{color:'#FFF9EB',opacity:0.7,fontSize:'15px',lineHeight:'1.7',marginBottom:'20px'}}>
-              A multi-module university management system in C++ with fee tracking, merit lists, and report generation.
-            </p>
-            <div style={{display:'flex',gap:'8px',flexWrap:'wrap',marginBottom:'20px'}}>
-              {['C++','OOP','File I/O','GitHub'].map(tag => (
-                <span key={tag} style={{backgroundColor:'rgba(159,178,172,0.15)',color:'#9FB2AC',padding:'4px 12px',borderRadius:'999px',fontSize:'12px'}}>{tag}</span>
-              ))}
-            </div>
-            <a href="https://github.com/AREEBA-ZIA/Campus-Analytics-Engine" target="_blank" style={{color:'#9FB2AC',fontSize:'14px',fontWeight:'600',textDecoration:'none'}}>View Project →</a>
-          </div>
-
-          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'32px',textAlign:'left',border:'1px solid rgba(159,178,172,0.2)'}}>
-            <h3 style={{color:'#FFF9EB',fontSize:'22px',fontWeight:'bold',marginBottom:'12px'}}>Amazon Clone</h3>
-            <p style={{color:'#FFF9EB',opacity:0.7,fontSize:'15px',lineHeight:'1.7',marginBottom:'20px'}}>
-              A fully responsive Amazon frontend clone with product listings, cart UI, and navigation.
-            </p>
-            <div style={{display:'flex',gap:'8px',flexWrap:'wrap',marginBottom:'20px'}}>
-              {['HTML','CSS','JavaScript'].map(tag => (
-                <span key={tag} style={{backgroundColor:'rgba(159,178,172,0.15)',color:'#9FB2AC',padding:'4px 12px',borderRadius:'999px',fontSize:'12px'}}>{tag}</span>
-              ))}
-            </div>
-            <a href="https://github.com/AREEBA-ZIA/Amazon-Clone" target="_blank" style={{color:'#9FB2AC',fontSize:'14px',fontWeight:'600',textDecoration:'none'}}>View Project →</a>
-          </div>
-
-          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'32px',textAlign:'left',border:'1px solid rgba(159,178,172,0.2)'}}>
-            <h3 style={{color:'#FFF9EB',fontSize:'22px',fontWeight:'bold',marginBottom:'12px'}}>Task Board</h3>
-            <p style={{color:'#FFF9EB',opacity:0.7,fontSize:'15px',lineHeight:'1.7',marginBottom:'20px'}}>
-              A task management app to add, organize, and drop tasks with a clean, intuitive interface.
-            </p>
-            <div style={{display:'flex',gap:'8px',flexWrap:'wrap',marginBottom:'20px'}}>
-              {['Next.js','TypeScript','Tailwind CSS'].map(tag => (
-                <span key={tag} style={{backgroundColor:'rgba(159,178,172,0.15)',color:'#9FB2AC',padding:'4px 12px',borderRadius:'999px',fontSize:'12px'}}>{tag}</span>
-              ))}
-            </div>
-            <a href="https://github.com/AREEBA-ZIA/task-board" target="_blank" style={{color:'#9FB2AC',fontSize:'14px',fontWeight:'600',textDecoration:'none'}}>View Project →</a>
-          </div>
-
-          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'32px',textAlign:'left',border:'1px solid rgba(159,178,172,0.2)'}}>
-            <h3 style={{color:'#FFF9EB',fontSize:'22px',fontWeight:'bold',marginBottom:'12px'}}>SourceIt</h3>
-            <p style={{color:'#FFF9EB',opacity:0.7,fontSize:'15px',lineHeight:'1.7',marginBottom:'20px'}}>
-              A demand-based shopping platform where customers request specific products and the team sources and delivers them.
-            </p>
-            <div style={{display:'flex',gap:'8px',flexWrap:'wrap',marginBottom:'20px'}}>
-              {['Next.js','Supabase','TypeScript'].map(tag => (
-                <span key={tag} style={{backgroundColor:'rgba(159,178,172,0.15)',color:'#9FB2AC',padding:'4px 12px',borderRadius:'999px',fontSize:'12px'}}>{tag}</span>
-              ))}
-            </div>
-            <a href="https://github.com/AREEBA-ZIA/sourceit" target="_blank" style={{color:'#9FB2AC',fontSize:'14px',fontWeight:'600',textDecoration:'none'}}>View Project →</a>
-          </div>
-
+      <section id="projects" className="mx-auto max-w-6xl px-6 py-24">
+        <Heading>Projects</Heading>
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {projects.map((p) => (
+            <Tilt key={p.name} max={8}>
+              <article className="lift flex h-full flex-col p-7">
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="font-display text-2xl font-bold">{p.name}</h3>
+                  <span className="shrink-0 rounded-full bg-rose/15 px-3 py-1 text-xs font-semibold text-rose">
+                    {p.status}
+                  </span>
+                </div>
+                <p className="mt-3 flex-1 leading-relaxed text-muted">{p.text}</p>
+                <ul className="mt-5 flex flex-wrap gap-2 text-sm text-ice">
+                  {p.tags.map((t) => (
+                    <li key={t} className="rounded-md bg-ice/10 px-2.5 py-1">
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+                {p.href && (
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-5 text-sm font-semibold text-ice hover:underline"
+                  >
+                    View on GitHub
+                  </a>
+                )}
+              </article>
+            </Tilt>
+          ))}
         </div>
       </section>
 
-      <section id="skills" style={{padding:'80px 48px',maxWidth:'900px',margin:'0 auto',textAlign:'center'}}>
-        <p style={{color:'#9FB2AC',letterSpacing:'4px',textTransform:'uppercase',fontSize:'14px',marginBottom:'16px'}}>What I Know</p>
-        <h2 style={{color:'#FFF9EB',fontSize:'36px',fontWeight:'bold',marginBottom:'48px'}}>Skills</h2>
-        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(250px,1fr))',gap:'24px',textAlign:'left'}}>
-
-          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'28px',border:'1px solid rgba(159,178,172,0.2)'}}>
-            <h3 style={{color:'#9FB2AC',fontSize:'16px',fontWeight:'600',marginBottom:'16px'}}>Frontend & Design</h3>
-            {['React','Next.js','Tailwind CSS','HTML & CSS','JavaScript','WordPress','Figma'].map(skill => (
-              <div key={skill} style={{color:'#FFF9EB',opacity:0.8,fontSize:'15px',padding:'8px 0',borderBottom:'1px solid rgba(255,249,235,0.08)'}}>{skill}</div>
-            ))}
-          </div>
-
-          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'28px',border:'1px solid rgba(159,178,172,0.2)'}}>
-            <h3 style={{color:'#9FB2AC',fontSize:'16px',fontWeight:'600',marginBottom:'16px'}}>Backend & Database</h3>
-            {['Node.js','FastAPI','Prisma','PostgreSQL','SQLite'].map(skill => (
-              <div key={skill} style={{color:'#FFF9EB',opacity:0.8,fontSize:'15px',padding:'8px 0',borderBottom:'1px solid rgba(255,249,235,0.08)'}}>{skill}</div>
-            ))}
-          </div>
-
-          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'28px',border:'1px solid rgba(159,178,172,0.2)'}}>
-            <h3 style={{color:'#9FB2AC',fontSize:'16px',fontWeight:'600',marginBottom:'16px'}}>DevOps & Tools</h3>
-            {['Docker','GitHub','GitLab','Git','Vercel','Railway'].map(skill => (
-              <div key={skill} style={{color:'#FFF9EB',opacity:0.8,fontSize:'15px',padding:'8px 0',borderBottom:'1px solid rgba(255,249,235,0.08)'}}>{skill}</div>
-            ))}
-          </div>
-
-          <div style={{backgroundColor:'#3a0810',borderRadius:'16px',padding:'28px',border:'1px solid rgba(159,178,172,0.2)'}}>
-            <h3 style={{color:'#9FB2AC',fontSize:'16px',fontWeight:'600',marginBottom:'16px'}}>AI & Others</h3>
-            {['Python','C++','Gemini API','Anthropic API','Prompt Engineering'].map(skill => (
-              <div key={skill} style={{color:'#FFF9EB',opacity:0.8,fontSize:'15px',padding:'8px 0',borderBottom:'1px solid rgba(255,249,235,0.08)'}}>{skill}</div>
-            ))}
-          </div>
-
+      <section id="certificate" className="mx-auto max-w-4xl px-6 py-24">
+        <Heading>Certificate</Heading>
+        <p className="mt-4 text-muted">Web Development Course, Rumi Institute, 2023.</p>
+        <div className="mt-10">
+          <Tilt max={6}>
+            <Image
+              src="/certificate.png"
+              alt="Certificate of Appreciation awarded to Areeba Zia by Rumi Institute for completing a web development course"
+              width={1600}
+              height={1067}
+              className="h-auto w-full rounded-[10px]"
+            />
+          </Tilt>
         </div>
       </section>
 
-      <section id="contact" style={{padding:'80px 48px',maxWidth:'600px',margin:'0 auto',textAlign:'center'}}>
-        <p style={{color:'#9FB2AC',letterSpacing:'4px',textTransform:'uppercase',fontSize:'14px',marginBottom:'16px'}}>Get In Touch</p>
-        <h2 style={{color:'#FFF9EB',fontSize:'36px',fontWeight:'bold',marginBottom:'16px'}}>Contact Me</h2>
-        <p style={{color:'#FFF9EB',opacity:0.7,fontSize:'18px',lineHeight:'1.8',marginBottom:'48px'}}>
-          Whether you have a project in mind or just want to say hi, my inbox is always open!
+      <section id="contact" className="mx-auto max-w-4xl px-6 py-24 text-center">
+        <Heading>Let’s build something together.</Heading>
+        <p className="mx-auto mt-4 max-w-md text-muted">
+          Open to remote and freelance work. My inbox is always open.
         </p>
-        <div style={{display:'flex',flexDirection:'column',gap:'16px',marginBottom:'48px'}}>
-          <a href="mailto:areebazia959@gmail.com" style={{backgroundColor:'#9FB2AC',color:'#5D0D18',padding:'16px 32px',borderRadius:'999px',fontWeight:'600',textDecoration:'none',fontSize:'16px'}}>
-            Send Me an Email
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          {links.email && (
+            <a
+              href={`mailto:${links.email}`}
+              className="rounded-xl bg-iris px-6 py-3 font-semibold text-white transition hover:brightness-110"
+            >
+              Send an email
+            </a>
+          )}
+          {links.linkedin && (
+            <a href={links.linkedin} target="_blank" rel="noreferrer" className={outlineBtn}>
+              LinkedIn
+            </a>
+          )}
+          <a href={links.github} target="_blank" rel="noreferrer" className={outlineBtn}>
+            GitHub
           </a>
-          <a href="https://www.linkedin.com/in/areeba-zia2006/" target="_blank" style={{backgroundColor:'#5D0D18',border:'2px solid #9FB2AC',color:'#9FB2AC',padding:'16px 32px',borderRadius:'999px',fontWeight:'600',textDecoration:'none',fontSize:'16px'}}>
-            LinkedIn Profile
-          </a>
-          <a href="https://github.com/AREEBA-ZIA" target="_blank" style={{border:'2px solid #9FB2AC',color:'#9FB2AC',padding:'16px 32px',borderRadius:'999px',fontWeight:'600',textDecoration:'none',fontSize:'16px'}}>
-            GitHub Profile
-          </a>
+          {links.fiverr && (
+            <a href={links.fiverr} target="_blank" rel="noreferrer" className={outlineBtn}>
+              Fiverr
+            </a>
+          )}
+          {links.upwork && (
+            <a href={links.upwork} target="_blank" rel="noreferrer" className={outlineBtn}>
+              Upwork
+            </a>
+          )}
         </div>
-        <p style={{color:'#FFF9EB',opacity:0.4,fontSize:'14px'}}>© 2025 Areeba Zia. All rights reserved.</p>
       </section>
-    </>
+
+      <footer className="border-t border-white/10 py-8 text-center text-sm text-muted">
+        © {new Date().getFullYear()} Areeba Zia
+      </footer>
+    </main>
   );
 }
